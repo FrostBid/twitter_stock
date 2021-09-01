@@ -3,19 +3,6 @@ Twitter Stock
 =============
 
 
-.. image:: https://img.shields.io/pypi/v/twitter_stock.svg
-        :target: https://pypi.python.org/pypi/twitter_stock
-
-.. image:: https://img.shields.io/travis/FrostBid/twitter_stock.svg
-        :target: https://travis-ci.com/FrostBid/twitter_stock
-
-.. image:: https://readthedocs.org/projects/twitter-stock/badge/?version=latest
-        :target: https://twitter-stock.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
-
-
-
-
 Twitter stock sentinment: Compares twitter sentinment with the real performance of stock.
 
 
@@ -26,7 +13,9 @@ Twitter stock sentinment: Compares twitter sentinment with the real performance 
 Features
 --------
 
-* TODO
+* Compares Twitter sentinment with the real pricing of a stock.
+* Stock list: AAPL, AAL, GME, MARA, TSLA
+* To be featured on a portfolio website.
 
 Credits
 -------
