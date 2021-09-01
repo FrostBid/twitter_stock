@@ -101,5 +101,5 @@ ENV/
 # mypy
 .mypy_cache/
 
-# IDE settings
-.vscode/
+# API code
+.vscode/!/twitter_stock/secret.py
