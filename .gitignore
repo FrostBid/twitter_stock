@@ -103,3 +103,4 @@ ENV/
 
 # API code
 .vscode/!/twitter_stock/secret.py
+twitter_stock/secret.py
