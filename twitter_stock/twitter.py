@@ -18,30 +18,21 @@ from secret import accesstokensecret
 Class TwitterData():
     def __init__(self,stock):
         self.stock = stock
-
-    def gettweets(self):
-        auth = tweepy.auth.OAuthHandler(consumerkey, consumersecret)
+        data_set = tweets_df(results)
+        auth = tweepy.OAuthHandler(consumerkey, consumersecret)
         auth.set_access_token(accesstoken, accesstokensecret)
-        api = tweepy.API(auth, wait_on_rate_limit = True)
+        api = tweepy.API(auth)
+        self.results = []
+        for tweet in tweepy.Cursor(api.search, q=f'{self.stock} -filter:retweets min_faves:1', lang='en',
+                                   wait_on_rate_limit=True).items(5000):
+            if tweet.user.followers_count > 25:
+                self.results.append(tweet)
 
-        tweetlist = [tweets for tweets in tweepy.Cursor(api.search,
-                                                          q=stocksymbol,
-                                                          lang="en",
-                                                          since_id=since_id_num2,
-                                                          tweet_mode='extended').items(num_tweets2)]
-
-        for tweet in tweet_list2[::-1]:
-            tweet_id = tweet.id  # get Tweet ID result
-            created_at = tweet.created_at  # get time tweet was created
-            text = tweet.full_text  # retrieve full tweet text
-            with open('stockdata', 'a', newline='', encoding='utf-8') as csvFile2:
-                csv_writer2 = csv.writer(csvFile2, delimiter=',')  # create an instance of csv object
-                csv_writer2.writerow([tweet_id, created_at, text])  # write each row
-
-
-        stocksymbol = "$TSLA"
-        search_query2 = search_words2 + " -filter:links AND -filter:retweets AND -filter:replies"
-        with open('stockdata.csv', encoding='utf-8') as data:
-            latest_tweet = int(list(csv.reader(data))[-1][0])  # Return the most recent tweet ID
-
-        return gettweets(search_query2, 10000, latest_tweet)
+    def tweets_df(self):
+        id_list = [tweet.id for tweet in self.results]
+        data_set = pd.DataFrame(id_list, columns=["id"])
+        data_set["text"] = [tweet.text for tweet in self.results]
+        data_set["Hashtags"] = [tweet.entities['hashtags'] for tweet in self.results]
+        data_set["date"] = [tweet.created_at for tweet in self.results]
+        data_set["follower_count"] = [tweet.user.followers_count for tweet in self.results]
+        return data_set
