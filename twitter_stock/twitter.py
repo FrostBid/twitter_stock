@@ -1,6 +1,3 @@
-import requests
-import os
-import json
 import pandas as pd
 import datetime
 import dateutil.parser
@@ -15,7 +12,7 @@ from secret import consumersecret
 from secret import accesstoken
 from secret import accesstokensecret
 
-Class TwitterData():
+class TwitterData():
     def __init__(self,stock):
         self.stock = stock
         data_set = tweets_df(results)
@@ -30,9 +27,13 @@ Class TwitterData():
 
     def tweets_df(self):
         id_list = [tweet.id for tweet in self.results]
-        data_set = pd.DataFrame(id_list, columns=["id"])
-        data_set["text"] = [tweet.text for tweet in self.results]
-        data_set["Hashtags"] = [tweet.entities['hashtags'] for tweet in self.results]
-        data_set["date"] = [tweet.created_at for tweet in self.results]
-        data_set["follower_count"] = [tweet.user.followers_count for tweet in self.results]
-        return data_set
+        self.data_set = pd.DataFrame(id_list, columns=["id"])
+        self.data_set["text"] = [tweet.text for tweet in self.results]
+        self.data_set["Hashtags"] = [tweet.entities['hashtags'] for tweet in self.results]
+        self.data_set["date"] = [tweet.created_at for tweet in self.results]
+        self.data_set["follower_count"] = [tweet.user.followers_count for tweet in self.results]
+        filename = 'scraped_user_tweets.csv'
+        return self.data_set
+
+    def dfcleaning(self):
+        None

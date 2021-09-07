@@ -23,14 +23,9 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 The project has also taken reference from the following github pages/websites.
 
-* https://github.com/you915/Sentiment-Analysis-of-Twitter-Data-for-predicting-Apple-stock-price
-* https://github.com/poojathakoor/twitter-stock-sentiment
-* https://github.com/AshwiniDPrabhu/Stock-Prediction-Using-Twitter-Sentiment-Analysis
 * https://github.com/evayl2/Twitter-Stock-Sentiment-Analysis
 * https://towardsdatascience.com/sentiment-analysis-for-stock-price-prediction-in-python-bed40c65d178
-
-
-
+* https://www.analyticsvidhya.com/blog/2018/07/hands-on-sentiment-analysis-dataset-python/
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
