@@ -8,3 +8,5 @@ yfinance~=0.1.63
 requests~=2.26.0
 
 tqdm~=4.62.2
+
+numpy~=1.21.0
