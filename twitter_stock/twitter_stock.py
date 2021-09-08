@@ -3,7 +3,6 @@ from twitter import *
 from yahoodata import *
 
 symbol = str(input('Please input a stock symbol.')).upper()
-
 yahoo = YahooData(symbol)
 yahoo.historicalgraph()
 

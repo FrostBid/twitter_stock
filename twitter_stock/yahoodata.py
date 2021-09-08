@@ -5,13 +5,11 @@ import sys
 
 class YahooData():
     def __init__(self, stock):
-        try:
-            yf.Ticker(stock).info
-        except:
-            print(f"Error: Cannot retrieve {stock}, please input a valid stock symbol.")
+        if (yf.Ticker(stock).info['regularMarketPrice'] == None):
+            print(f"ERROR: {stock} is not a valid stock, please try again.")
             sys.exit(1)
-
         self.stock = yf.Ticker(stock)
+        print('Fetching stock data from yahoo.')
 
     def historicalgraph(self):
         df = self.stock.history(period="max")
@@ -41,4 +39,4 @@ class YahooData():
         fig.show()
         fig.write_image(f"{self.stock.info['symbol']}_stockprice.png")
 
-        print('Image saved.')
+        print('Stock data compiled.')
