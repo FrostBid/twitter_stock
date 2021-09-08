@@ -28,6 +28,7 @@ The project has also taken reference from the following github pages/websites.
 * https://towardsdatascience.com/sentiment-analysis-for-stock-price-prediction-in-python-bed40c65d178
 * https://www.analyticsvidhya.com/blog/2018/07/hands-on-sentiment-analysis-dataset-python/
 * https://github.com/ariessa/Twitter-Sentiment-Analysis-Using-VADER
+* https://algotrading101.com/learn/sentiment-analysis-python-guide/
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage

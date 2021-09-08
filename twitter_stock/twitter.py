@@ -6,10 +6,8 @@ import numpy as np
 import re
 import matplotlib.pyplot as plt
 
-from secret import consumerkey
-from secret import consumersecret
-from secret import accesstoken
-from secret import accesstokensecret
+from sentinment_analysis import sa
+from secret import *
 
 
 class TwitterData():
@@ -44,6 +42,7 @@ class TwitterData():
         self.data_set['text'] = self.data_set['text'].str.replace(r'\n', ' ', regex=True)
         self.data_set['text'] = self.data_set['text'].str.encode('ascii', errors='ignore')
         self.data_set['text'] = self.data_set['text'].str.decode("utf-8")
+        sa(self.data_set)
         return self.data_set
 
     def remove_pattern(self, input_txt, pattern):
