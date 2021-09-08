@@ -11,9 +11,10 @@ Twitter stock sentinment: Compares twitter sentinment with the real performance 
 Info
 --------
 
-* Shows overall sentinment of the latest 5000 tweets of stocks on Twitter.
-* Shows wordcloud.
-* **This is not for scientific research purposes** but merely as an exercise to gain experience on managing a project structure, the use of APIs, VADER Analysis, pandas/matlab visualisation tools as well as working with financial data via python.
+* Shows overall sentinment score based on the latest 5000 tweets of stocks on Twitter.
+* Shows historical stock price with customisable options on 5 minute chart, daily chart, weekly chart.
+* Shows wordcloud associated with the stock.
+* **This is not for research / investment purposes** but merely as a beginner project to gain experience on managing a project via git, the use of APIs, VADER Analysis, pandas/matlab visualisation tools, website development as well as working with financial data via python.
 * To be featured on a portfolio website using django.
 
 Credits
