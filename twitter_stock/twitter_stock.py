@@ -1,5 +1,13 @@
 """Main module."""
 from twitter import *
-tsla = TwitterData('$TSLA')
-tsla.wordcloud()
-tsla.csv
+from yahoodata import *
+
+symbol = str(input('Please input a stock symbol.')).upper()
+
+yahoo = YahooData(symbol)
+yahoo.historicalgraph()
+
+stock = '$' + symbol
+stock = TwitterData(stock)
+stock.wordcloud()
+stock.csv()

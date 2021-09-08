@@ -1,33 +1,44 @@
-import pandas as pd
 import yfinance as yf
-import datetime
-import time
-import requests
-import io
+import plotly.graph_objects as plgo
+import sys
 
-class YahooData(self,stock):
-    def __init__(self):
-        self.stock = stock
 
-    def getdata(stock):
-        # create empty dataframe
-        stock_final = pd.DataFrame()
-        # iterate over each symbol
-        for i in Symbols:
+class YahooData():
+    def __init__(self, stock):
+        try:
+            yf.Ticker(stock).info
+        except:
+            print(f"Error: Cannot retrieve {stock}, please input a valid stock symbol.")
+            sys.exit(1)
 
-            # print the symbol which is being downloaded
-            print(str(Symbols.index(i)) + str(' : ') + i, sep=',', end=',', flush=True)
+        self.stock = yf.Ticker(stock)
 
-            try:
-                # download the stock price
-                stock = []
-                stock = yf.download(i, start=start, end=end, progress=False)
+    def historicalgraph(self):
+        df = self.stock.history(period="max")
+        df = df.reset_index()
+        for i in ['Open', 'High', 'Close', 'Low']:
+            df[i] = df[i].astype('float64')
 
-                # append the individual stock prices
-                if len(stock) == 0:
-                    None
-                else:
-                    stock['Name'] = i
-                    stock_final = stock_final.append(stock, sort=False)
-            except Exception:
-                None
+        fig = plgo.Figure([plgo.Scatter(x=df['Date'], y=df['High'])])
+        fig = plgo.Figure(data=[plgo.Candlestick(x=df['Date'],
+                                                 open=df['Open'],
+                                                 high=df['High'],
+                                                 low=df['Low'],
+                                                 close=df['Close'])])
+
+        fig.update_xaxes(
+            rangeslider_visible=True,
+            rangeselector=dict(
+                buttons=list([
+                    dict(count=1, label="1m", step="month", stepmode="backward"),
+                    dict(count=6, label="6m", step="month", stepmode="backward"),
+                    dict(count=1, label="YTD", step="year", stepmode="todate"),
+                    dict(count=1, label="1y", step="year", stepmode="backward"),
+                    dict(step="all")
+                ])
+            )
+        )
+        fig.show()
+        fig.write_image(f"{self.stock.info['symbol']}_stockprice.png")
+
+        print('Image saved.')

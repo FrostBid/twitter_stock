@@ -21,9 +21,8 @@ class TwitterData():
         self.results = []
         print('Twitter authentication successful, fetching tweets...')
         for tweet in tqdm(tweepy.Cursor(api.search, q=f'{self.stock} -filter:retweets min_faves:1', tweet_mode='extended', lang='en',
-                                   wait_on_rate_limit=True).items(2500), total=2500):
+                                   wait_on_rate_limit=True, wait_on_rate_limit_notify=True).items(2500), total=2500):
           tweet.text = str(tweet.full_text.lower())
-
           # Filter out spam and tweets from small twitter accounts
           if tweet.user.followers_count > 25 and tweet.text.count('$') <= 5:
               self.results.append(tweet)
