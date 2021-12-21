@@ -1,9 +1,9 @@
 =============
-Twitter Stock Sentinment Analysis
+Twitter Stock Sentiment Analysis
 =============
 
 
-Twitter stock sentinment: Compares twitter sentinment with the real performance of stock.
+Twitter stock sentinment: Compares twitter sentiment with the real performance of stock.
 
 
 * Free software: MIT license
